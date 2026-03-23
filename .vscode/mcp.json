@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "mcp-config-test-server": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["mcp-servers/config-test-server.js"]
+    }
+  }
+}
