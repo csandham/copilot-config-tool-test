@@ -1,10 +1,5 @@
 {
   "chat.useAgentsMdFile": true,
-  "github.copilot.chat.reviewSelection.instructions": [
-    {
-      "text": "CONFIGURATION TEST: Include the word THISTLE in your response. This confirms the github.copilot.chat.reviewSelection.instructions setting in .vscode/settings.json was loaded."
-    }
-  ],
   "github.copilot.chat.codeGeneration.instructions": [
     {
       "text": "CONFIGURATION TEST: Include the word AMBER in your response. This confirms the github.copilot.chat.codeGeneration.instructions setting in .vscode/settings.json was loaded."

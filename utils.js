@@ -1,5 +1,5 @@
 // Utility functions for manual Copilot configuration tests.
-// Select code from this file to test THISTLE (review), AMBER (generate), and QUARTZ (test generation).
+// Select code from this file to test AMBER (generate) and QUARTZ (test generation).
 
 /**
  * Reverses a string.

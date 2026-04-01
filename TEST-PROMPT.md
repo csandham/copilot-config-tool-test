@@ -11,7 +11,6 @@ configuration was loaded or invoked.
 | SAFFRON | `.github/copilot-instructions.md`                                  | Custom instructions (repo-wide)   | Auto-loaded                    |
 | CONDOR  | `AGENTS.md`                                                        | AGENTS.md instructions            | Auto-loaded (requires setting) |
 | MARBLE  | `.github/instructions/conventions.instructions.md`                 | Scoped instructions               | Auto-loaded                    |
-| THISTLE | `.vscode/settings.json` (reviewSelection.instructions)             | Settings — code review            | On code review action          |
 | AMBER   | `.vscode/settings.json` (codeGeneration.instructions)              | Settings — code generation        | On code generation action      |
 | QUARTZ  | `.vscode/settings.json` (testGeneration.instructions)              | Settings — test generation        | On test generation action      |
 | OSPREY  | `.github/prompts/config-test.prompt.md`                            | Prompt file (mode: agent)         | `/config-test` invocation      |
@@ -92,18 +91,6 @@ For each word, mark ✅ if it appeared, or ❌ if not detected.
 
 ---
 
-## Manual Test: THISTLE (settings — code review)
-
-THISTLE is embedded in `github.copilot.chat.reviewSelection.instructions` and fires only
-when Copilot reviews selected code, not on every message.
-
-> Select any block of code in the editor, then ask Copilot to review it.
->
-> **Pass:** THISTLE appears in the response.
-> **Fail:** Not detected — `reviewSelection.instructions` is not supported or not loaded.
-
----
-
 ## Manual Test: AMBER (settings — code generation)
 
 If AMBER was not detected in the single-shot test, `codeGeneration.instructions` may
@@ -149,7 +136,6 @@ If QUARTZ was not detected in the single-shot test, test it via the dedicated ac
 | SAFFRON — `.github/copilot-instructions.md`            |             |        |          | ✅                        |
 | CONDOR — `AGENTS.md`                                   |             |        |          | ✅                        |
 | MARBLE — `.github/instructions/`                       |             |        |          | ✅                        |
-| THISTLE — settings: reviewSelection.instructions       |             |        |          | ❌                        |
 | AMBER — settings: codeGeneration.instructions          |             |        |          | ✅                        |
 | QUARTZ — settings: testGeneration.instructions         |             |        |          | ✅                        |
 | OSPREY — `.github/prompts/` (mode: agent)              |             |        |          | ✅                        |

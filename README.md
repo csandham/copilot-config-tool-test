@@ -15,7 +15,6 @@ Each magic word maps to one GitHub Copilot configuration concept:
 | SAFFRON | `.github/copilot-instructions.md`                                  | Custom instructions (repo-wide)         |
 | CONDOR  | `AGENTS.md`                                                        | AGENTS.md instructions                  |
 | MARBLE  | `.github/instructions/conventions.instructions.md`                 | Scoped/path-specific instructions       |
-| THISTLE | `.vscode/settings.json` (reviewSelection.instructions)             | Settings instructions — code review     |
 | AMBER   | `.vscode/settings.json` (codeGeneration.instructions)              | Settings instructions — code generation |
 | QUARTZ  | `.vscode/settings.json` (testGeneration.instructions)              | Settings instructions — test generation |
 | OSPREY  | `.github/prompts/config-test.prompt.md`                            | Prompt file (mode: agent)               |
@@ -34,17 +33,15 @@ The MCP server test requires installing dependencies first:
 cd mcp-servers && npm install
 ```
 
-### THISTLE / AMBER / QUARTZ note
+### AMBER / QUARTZ note
 
-All three are embedded in `github.copilot.chat.*.instructions` settings in `.vscode/settings.json`,
+Both are embedded in `github.copilot.chat.*.instructions` settings in `.vscode/settings.json`,
 but each fires on a different Copilot action:
 
-- **THISTLE** — fires when Copilot reviews selected code (`reviewSelection.instructions`)
 - **AMBER** — fires when Copilot generates code (`codeGeneration.instructions`)
 - **QUARTZ** — fires when Copilot generates tests (`testGeneration.instructions`)
 
-THISTLE requires a VS Code UI action and cannot be triggered from chat. AMBER and QUARTZ
-may fire during chat if the response involves code or test generation — this is worth
+AMBER and QUARTZ may fire during chat if the response involves code or test generation — this is worth
 verifying empirically.
 
 ### CONDOR note
@@ -67,11 +64,6 @@ Tests SAFFRON, CONDOR, MARBLE, OSPREY, BADGER, FALCON, AMBER, and QUARTZ.
 Switch to the **config-test-agent** in the chat agent picker, then paste the
 agent-mode prompt from [TEST-PROMPT.md](TEST-PROMPT.md). Tests PRISM and COBALT.
 
-### Manual test: THISTLE (settings — code review)
-
-Select any code in the editor, then ask Copilot to review it.
-THISTLE in the response confirms `reviewSelection.instructions` is loaded.
-
 ## Results
 
 | Config feature                                         | Claude Code | Cursor | Windsurf | GitHub Copilot (VS Code) |
@@ -79,7 +71,6 @@ THISTLE in the response confirms `reviewSelection.instructions` is loaded.
 | SAFFRON — `.github/copilot-instructions.md`            | ❌           | ❌      | ❌        | ✅                        |
 | CONDOR — `AGENTS.md`                                   | ❌           | ✅      | ✅        | ✅                        |
 | MARBLE — `.github/instructions/`                       | ❌           | ❌      | ❌        | ✅                        |
-| THISTLE — settings: reviewSelection.instructions       | ❌           | ❌      | ❌        | ❌                        |
 | AMBER — settings: codeGeneration.instructions          | ❌           | ❌      | ✅        | ✅                        |
 | QUARTZ — settings: testGeneration.instructions         | ❌           | ❌      | ✅        | ✅                        |
 | OSPREY — `.github/prompts/` (mode: agent)              | ❌           | ❌      | ✅        | ✅                        |
@@ -112,7 +103,7 @@ THISTLE in the response confirms `reviewSelection.instructions` is loaded.
 │           └── SKILL.md                          # Agent skill (COBALT)
 ├── .vscode/
 │   ├── mcp.json                                  # MCP server config (FALCON)
-│   └── settings.json                             # Settings instructions (THISTLE/AMBER/QUARTZ)
+│   └── settings.json                             # Settings instructions (AMBER/QUARTZ)
 └── mcp-servers/
     ├── config-test-server.js                     # MCP tool server
     └── package.json                              # MCP SDK dependency
